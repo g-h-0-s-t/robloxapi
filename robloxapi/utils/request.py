@@ -31,8 +31,8 @@ class Request:
         Gets an xcstf token.
         :return: An xcsrf
         """
-        r = await self.requests.post('https://www.roblox.com/favorite/toggle')
-        if r.headers['X-CSRF-TOKEN']:
+        r = await self.requests.post('https://auth.roblox.com/')
+        if r.headers.get('X-CSRF-TOKEN'):
             return r.headers['X-CSRF-TOKEN']
         else:
             return None
